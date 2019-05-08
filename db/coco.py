@@ -22,7 +22,7 @@ class MSCOCO(DETECTION):
         self._split = split
         self._dataset = {
             "trainval": "train2017",
-            "minival": "val2107",
+            "minival": "val2017",
             "testdev": "val2017"
         }[self._split]
         
@@ -80,6 +80,7 @@ class MSCOCO(DETECTION):
                 self._detections, self._image_ids = pickle.load(f)
 
     def _load_coco_data(self):
+        print(self._label_file)
         self._coco = COCO(self._label_file)
         with open(self._label_file, "r") as f:
             data = json.load(f)
